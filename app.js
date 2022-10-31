@@ -40,9 +40,6 @@ function handleGuess(correctSpot, userGuess) {
     totalGuesses++;
     if (correctSpot === userGuess) {
         correctGuesses++;
-        totalGuesses++;
-    } else {
-        totalGuesses++;
     }
     if (correctSpot === 'shed') {
         shedContainer.classList.add('face');
@@ -51,6 +48,7 @@ function handleGuess(correctSpot, userGuess) {
     } else {
         boulderContainer.classList.add('face');
     }
+    displayResults();
 }
 
 // then grab the appropriate container element for the correct guess from the DOM
@@ -62,4 +60,10 @@ function resetFaces() {
     shedContainer.classList.remove('face');
     treeContainer.classList.remove('face');
     boulderContainer.classList.remove('face');
+}
+
+function displayResults() {
+    totalEl.textContent = totalGuesses;
+    lossesEl.textContent = totalGuesses - correctGuesses;
+    winsEl.textContent = correctGuesses;
 }
